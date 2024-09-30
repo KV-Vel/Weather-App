@@ -1,7 +1,7 @@
 {
-  "name": "template",
+  "name": "weather-app",
   "version": "1.0.0",
-  "description": "Template with for html, css, js, webpack, eslint with prettier",
+  "description": "Weather App for Odin Project",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

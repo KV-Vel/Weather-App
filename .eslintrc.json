@@ -2,18 +2,16 @@
   "extends": ["airbnb", "prettier"],
   "plugins": ["prettier"],
   "parserOptions": {
-      "project": "./tsconfig.json"
+    "project": "./tsconfig.json"
   },
   "rules": {
-    "prettier/prettier": [
+    "import/extensions": [
       "error",
-      {
-        "endOfLine": "auto"
-      }
+      "ignorePackages",
+      { "js": "never", "jsx": "never", "ts": "never", "tsx": "never" }
     ],
-    "import/extensions": ["error", "ignorePackages", { "js": "never", "jsx": "never", "ts": "never", "tsx": "never" }],
     "linebreak-style": 0,
     "global-require": 0,
     "eslint linebreak-style": [0, "error", "windows"]
   }
-    }
+}
