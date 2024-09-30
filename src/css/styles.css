@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    /*Colors*/
+    --main-background: #F8F9FA;
+    --darkest: #212529;
+    --middle-gray: #ADB5BD;
+    --interactivity-gray: #495057;
+    /*Font*/
+    --biggest-font-size: 2.5rem;
+}
+
+body {
+    background-color: var(--main-background);
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    color: var(--darkest);
+}
+
+h1 {
+   font-size: var(--biggest-font-size);
+}
+
+header,
+.search-wrapper {
+    text-align: center;
+    margin: 2.5rem auto;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+input {
+    outline: 1px solid var(--middle-gray);
+    padding: 5px 5px 5px 15px;
+    border-radius: 15px;
+}
+
+input:focus {
+    outline: 1px solid var(--interactivity-gray);
+}
+
+.find-btn {
+    border-bottom: 3px solid var(--interactivity-gray);
+    padding: 5px 1.5rem 2px 1.5rem;
+    font-weight: 300;
+    position: relative;
+    border-radius: 2px;
+}
+
+.find-btn:hover {
+    color: var(--main-background);
+}
+
+.find-btn::after {
+    position: absolute;
+    content: '';
+    right:0;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--interactivity-gray);
+    z-index: -1;
+    transition: 0.2s ease-in;
+    height: 0%;
+}
+
+.find-btn:hover::after {
+    height: 100%;
+    border-radius: 2px 2px 0 0;
+}

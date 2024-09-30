@@ -11,6 +11,7 @@ import './css/styles.css';
  * // Ulbi TV rest api
  * // Color Code fetch
  * // https://www.youtube.com/watch?v=01YKQmia2Jw&list=PLVvjrrRCBy2KvTPJ-HLG4PRqYf-MVJ0h7  -> посмотреть еще другие Notes stick и switchable tabs
+ * ADD Icon
  */
 
 const getWeather = async (city) => {
@@ -19,7 +20,7 @@ const getWeather = async (city) => {
     //Promise.race [getALLWEATHER, GET Today...]
     //а ОСТАЛЬНОЕ СДЕЛАТЬ С Promise.all?
     // Чтобы спарсить метрич или us систему London?key=6NTV9U8V6WYRPTLLUZNQC3DRN&unitGroup=us
-    // Автозаполнение мест: https://developers.google.com/maps/documentation/javascript/place-autocomplete?hl=ru или https://locationiq.com/
+    // Автозаполнение мест:https://apidocs.geoapify.com/samples/autocomplete/geoapify-geocoder-autocomplete/    https://developers.google.com/maps/documentation/javascript/place-autocomplete?hl=ru или https://locationiq.com/ 
     // https://github.com/visualcrossing/WeatherIcons/blob/main/README.md   
     // -> Читать ссылку выше --> И смотреть как называются картинки чтобы потом их исопльзовать у себя. Свои картинки брать отсюда
     // https://www.figma.com/design/23KLTLD5RDONdw2xVDMDKQ/QWeather-Icon-(Community)?node-id=4-402&node-type=frame&t=rz0qVV9iPWoIxAXi-0
