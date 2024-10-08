@@ -12,17 +12,192 @@
       </div>
     </header>
     <main>
-      <div class="search-wrapper">
+      <section class="search-wrapper">
         <form>
           <label>
-            <input type="search" placeholder="Enter a city">
+            <input
+              class="autocomplete"
+              type="search"
+              placeholder="Enter a city"
+            />
           </label>
           <button type="submit" class="find-btn">Find</button>
         </form>
-      </div>
-      <div class="big-window-wrapper">
-        
-      </div>
+      </section>
+      <section class="main-wrapper">
+        <div class="big-window-wrapper">
+          <div class="big-window__main-information">
+            <div class="left-window">
+              <div>
+                <div class="temperature">11°C</div>
+                <div class="state-description">Cloudy</div>
+              </div>
+              <div class="img-wrapper">
+                <img
+                  alt="weather-image"
+                  src="./assets/weather-svgs/heweather-icon-S1-color-source_101.svg"
+                />
+              </div>
+              <div class="main-information__text-wrapper">
+                <div class="location">Par, Corwall, United Kingdom</div>
+              </div>
+            </div>
+            <div class="right-window">
+              <ul class="additional-information__wrapper">
+                <li class="small-wrapper humidity">
+                  Humidity <span class="value">80%</span>
+                </li>
+                <li class="small-wrapper wind-speed">
+                  Wind speed <span class="value">3.6 kph</span>
+                </li>
+                <li class="small-wrapper sunrise">
+                  Sunrise <span class="value">07:56:33</span>
+                </li>
+                <li class="small-wrapper sunset">
+                  Sunset <span class="value">19:20:32</span>
+                </li>
+                <li class="small-wrapper cloud-cover">
+                  Cloud coverage <span class="value">29.1%</span>
+                </li>
+                <li class="small-wrapper precipitation">
+                  Precipitation probability <span class="value">35%</span>
+                </li>
+                <li class="small-wrapper visibility">
+                  Visibility <span class="value">6 km</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="hourly-weather__wrapper">
+          <div class="hourly-weather__inner-wrapper">
+            <div class="inner-wrapper-row">
+              <span hourly__time>00:00</span>
+              <span hourly__temperature>9°C</span>
+              <span class="hourly__rain-probability">15%</span>
+            </div>
+            <div class="inner-wrapper-row">
+              <span hourly__time>01:00</span>
+              <span hourly__temperature>9°C</span>
+              <span class="hourly__rain-probability">15%</span>
+            </div>
+            <div class="inner-wrapper-row">
+              <span hourly__time>02:00</span>
+              <span hourly__temperature>9°C</span>
+              <span class="hourly__rain-probability">15%</span>
+            </div>
+            <div class="inner-wrapper-row">
+              <span hourly__time>03:00</span>
+              <span hourly__temperature>9°C</span>
+              <span class="hourly__rain-probability">15%</span>
+            </div>
+            <div class="inner-wrapper-row">
+              <span hourly__time>04:00</span>
+              <span hourly__temperature>9°C</span>
+              <span class="hourly__rain-probability">15%</span>
+            </div>
+            <div class="inner-wrapper-row">
+              <span hourly__time>05:00</span>
+              <span hourly__temperature>9°C</span>
+              <span class="hourly__rain-probability">15%</span>
+            </div>
+            <div class="inner-wrapper-row">
+              <span hourly__time>06:00</span>
+              <span hourly__temperature>9°C</span>
+              <span class="hourly__rain-probability">15%</span>
+            </div>
+            <div class="inner-wrapper-row">
+              <span hourly__time>07:00</span>
+              <span hourly__temperature>19°C</span>
+              <span class="hourly__rain-probability">35%</span>
+            </div>
+            <div class="inner-wrapper-row">
+              <span hourly__time>08:00</span>
+              <span hourly__temperature>10°C</span>
+              <span class="hourly__rain-probability">25%</span>
+            </div>
+          </div>
+        </div>
+        <div class="next-5days__wrapper">
+          <button type="button" class="arrow arrow-left"></button>
+          <button type="button" class="arrow arrow-right"></button>
+          <div class="next-5days__inner-wrapper">
+            <div
+              class="day-wrapper first-day__wrapper active"
+              data-position="0"
+            >
+              <div class="weekday-img-wrapper">
+                <img
+                  src="./assets/weather-svgs/heweather-icon-S1-color-source_104.svg"
+                  alt="weather-picture"
+                  class="small-weather-image"
+                />
+              </div>
+              <div class="weekday-information">
+                <span class="small-temperature">16°C</span>
+                <span class="small-desctiption">Rain, overcast</span>
+                <span class="date">06.10</span>
+              </div>
+            </div>
+            <div class="day-wrapper second-day__wrapper" data-position="1">
+              <div class="weekday-img-wrapper">
+                <img
+                  src="./assets/weather-svgs/heweather-icon-S1-color-source_103.svg"
+                  alt="weather-picture"
+                  class="small-weather-image"
+                />
+              </div>
+              <div class="weekday-information">
+                <span class="small-temperature">15°C</span>
+                <span class="small-desctiption">Rain</span>
+                <span class="date">07.10</span>
+              </div>
+            </div>
+            <div class="day-wrapper third-day__wrapper" data-position="2">
+              <div class="weekday-img-wrapper">
+                <img
+                  src="assets/weather-svgs/heweather-icon-S1-color-source_150.svg"
+                  alt="weather-picture"
+                  class="small-weather-image"
+                />
+              </div>
+              <div class="weekday-information">
+                <span class="small-temperature">14°C</span>
+                <span class="small-desctiption">Sunny</span>
+                <span class="date">08.10</span>
+              </div>
+            </div>
+            <div class="day-wrapper fourth-day__wrapper" data-position="3">
+              <div class="weekday-img-wrapper">
+                <img
+                  src="assets/weather-svgs/heweather-icon-S1-color-source_302.svg"
+                  alt="weather-picture"
+                  class="small-weather-image"
+                />
+              </div>
+              <div class="weekday-information">
+                <span class="small-temperature">13°C</span>
+                <span class="small-desctiption">Sunny</span>
+                <span class="date">09.10</span>
+              </div>
+            </div>
+            <div class="day-wrapper fifth-day__wrapper" data-position="4">
+              <div class="weekday-img-wrapper">
+                <img
+                  src="assets/weather-svgs/heweather-icon-S1-color-source_302.svg"
+                  alt="weather-picture"
+                  class="small-weather-image"
+                />
+              </div>
+              <div class="weekday-information">
+                <span class="small-temperature">13°C</span>
+                <span class="small-desctiption">Sunny</span>
+                <span class="date">09.10</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   </body>
 </html>
