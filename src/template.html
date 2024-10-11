@@ -20,6 +20,7 @@
               type="search"
               placeholder="Enter a city"
             />
+            <div class="autocomplete-placeholder"></div>
           </label>
           <button type="submit" class="find-btn">Find</button>
         </form>
@@ -28,17 +29,17 @@
         <div class="big-window-wrapper">
           <div class="big-window__main-information">
             <div class="left-window">
-              <div>
+              <div class="temp-and-state">
                 <div class="temperature">11°C</div>
-                <div class="state-description">Cloudy</div>
-              </div>
-              <div class="img-wrapper">
-                <img
-                  alt="weather-image"
-                  src="./assets/weather-svgs/heweather-icon-S1-color-source_101.svg"
-                />
+                <div class="img-wrapper">
+                  <img
+                    alt="weather-image"
+                    src="./assets/weather-svgs/heweather-icon-S1-color-source_101.svg"
+                  />
+                </div>
               </div>
               <div class="main-information__text-wrapper">
+                <div class="state-description">Cloudy</div>
                 <div class="location">Par, Corwall, United Kingdom</div>
               </div>
             </div>
@@ -72,55 +73,63 @@
         <div class="hourly-weather__wrapper">
           <div class="hourly-weather__inner-wrapper">
             <div class="inner-wrapper-row">
-              <span hourly__time>00:00</span>
-              <span hourly__temperature>9°C</span>
+              <span class="hourly__time">00:00</span>
+              <span class="hourly__temperature">9°C</span>
               <span class="hourly__rain-probability">15%</span>
             </div>
             <div class="inner-wrapper-row">
-              <span hourly__time>01:00</span>
-              <span hourly__temperature>9°C</span>
+              <span class="hourly__time">01:00</span>
+              <span class="hourly__temperature">9°C</span>
               <span class="hourly__rain-probability">15%</span>
             </div>
             <div class="inner-wrapper-row">
-              <span hourly__time>02:00</span>
-              <span hourly__temperature>9°C</span>
+              <span class="hourly__time">02:00</span>
+              <span class="hourly__temperature">9°C</span>
               <span class="hourly__rain-probability">15%</span>
             </div>
             <div class="inner-wrapper-row">
-              <span hourly__time>03:00</span>
-              <span hourly__temperature>9°C</span>
+              <span class="hourly__time">03:00</span>
+              <span class="hourly__temperature">9°C</span>
               <span class="hourly__rain-probability">15%</span>
             </div>
             <div class="inner-wrapper-row">
-              <span hourly__time>04:00</span>
-              <span hourly__temperature>9°C</span>
+              <span class="hourly__time">04:00</span>
+              <span class="hourly__temperature">9°C</span>
               <span class="hourly__rain-probability">15%</span>
             </div>
             <div class="inner-wrapper-row">
-              <span hourly__time>05:00</span>
-              <span hourly__temperature>9°C</span>
+              <span class="hourly__time">05:00</span>
+              <span class="hourly__temperature">9°C</span>
               <span class="hourly__rain-probability">15%</span>
             </div>
             <div class="inner-wrapper-row">
-              <span hourly__time>06:00</span>
-              <span hourly__temperature>9°C</span>
+              <span class="hourly__time">06:00</span>
+              <span class="hourly__temperature">9°C</span>
               <span class="hourly__rain-probability">15%</span>
             </div>
             <div class="inner-wrapper-row">
-              <span hourly__time>07:00</span>
-              <span hourly__temperature>19°C</span>
+              <span class="hourly__time">07:00</span>
+              <span class="hourly__temperature">19°C</span>
               <span class="hourly__rain-probability">35%</span>
             </div>
             <div class="inner-wrapper-row">
-              <span hourly__time>08:00</span>
-              <span hourly__temperature>10°C</span>
+              <span class="hourly__time">08:00</span>
+              <span class="hourly__temperature">10°C</span>
               <span class="hourly__rain-probability">25%</span>
             </div>
           </div>
         </div>
         <div class="next-5days__wrapper">
-          <button type="button" class="arrow arrow-left"></button>
-          <button type="button" class="arrow arrow-right"></button>
+          <button
+            type="button"
+            class="arrow arrow-left"
+            aria-label="left arrow"
+          ></button>
+          <button
+            type="button"
+            class="arrow arrow-right"
+            aria-label="right arrow"
+          ></button>
           <div class="next-5days__inner-wrapper">
             <div
               class="day-wrapper first-day__wrapper active"

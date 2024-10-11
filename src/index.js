@@ -2,6 +2,7 @@ import './css/reset-css.css';
 import './css/styles.css';
 import './js/autocomplete';
 import './js/carousel';
+import './js/handleDOM';
 // Идея:
 /**
  * 1) Прогноз будет указан на 1 день, сверху будут кнопки для переключения между днями, или ползунок 1-7 дней
@@ -73,3 +74,4 @@ const getWeekWeather = (data) => {
 // delete geoapify спиздить стили для дропдауна
 //https://jsfiddle.net/gh/get/library/pure/googlemaps/js-samples/tree/master/dist/samples/places-autocomplete/jsfiddle
 // https://www.youtube.com/watch?v=l8pe_MSX4Lc
+// Исправить autocomplete когда не находит адрес, должно отображать что не нашло

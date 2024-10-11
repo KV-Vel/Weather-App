@@ -1,10 +1,13 @@
 const autocompleteInput = document.querySelector('.autocomplete');
+const autoCompletePlaceholder = document.querySelector(
+  '.autocomplete-placeholder',
+);
 const options = {
   method: 'GET',
   headers: { accept: 'application/json' },
   mode: 'cors',
 };
-// Move to utils folder?
+
 // eslint-disable-next-line import/prefer-default-export
 export const debounce = (func, ms) => {
   let timeout;
@@ -20,12 +23,13 @@ export const debounce = (func, ms) => {
 const getCitySuggestions = async () => {
   try {
     const response = await fetch(
-      `https://eu1.locationiq.com/v1/autocomplete?q=${autocompleteInput.value}&tag=place%3Acity%2C%20place%3Atown%2C%20place%3Avillage&limit=5&accept-language=en&dedupe=1&key=pk.372ca6b6ad1157e7185b0f6413208262`,
+      `https://eu1.locationiq.com/v1/autocomplete?q=${autocompleteInput.value}&tag=place%3Acity&limit=5&accept-language=en&dedupe=1&key=pk.372ca6b6ad1157e7185b0f6413208262`,
       options,
     );
-    const responseJSON = await response.json();
-    console.log(responseJSON);
-    return responseJSON;
+    if (response.ok) {
+      const responseJSON = await response.json();
+      return responseJSON;
+    }
   } catch (e) {
     console.log(e);
   }
@@ -35,14 +39,14 @@ function createAutoCompleteDOM(data) {
   if (document.querySelector('.autocomplete-wrapper')) {
     document.querySelector('.autocomplete-wrapper').remove();
   }
-
   const autocompleteWrapper = document.createElement('div');
   autocompleteWrapper.className = 'autocomplete-wrapper';
-
   // eslint-disable-next-line no-restricted-syntax, prefer-const
   for (let element of data) {
     const addressWrapper = document.createElement('div');
     addressWrapper.className = 'address-wrapper';
+    addressWrapper.setAttribute('data-lan', element.lat);
+    addressWrapper.setAttribute('data-lon', element.lon);
 
     const city = document.createElement('span');
     city.className = 'city';
@@ -55,15 +59,29 @@ function createAutoCompleteDOM(data) {
     addressWrapper.append(city, country);
     autocompleteWrapper.append(addressWrapper);
   }
-
-  autocompleteInput.insertAdjacentElement('afterEnd', autocompleteWrapper);
+  autoCompletePlaceholder.append(autocompleteWrapper);
 }
 
 function createAutoCompleteDropdown() {
-  getCitySuggestions().then((res) => createAutoCompleteDOM(res));
+  if (autocompleteInput.value.length >= 3) {
+    getCitySuggestions()
+      .then((res) => createAutoCompleteDOM(res))
+      .catch((e) => console.log(e));
+  }
 }
 const debouncedDropdown = debounce(createAutoCompleteDropdown, 1500);
 
 autocompleteInput.addEventListener('input', () => {
-  if (autocompleteInput.value.length >= 3) debouncedDropdown();
+  if (autocompleteInput.value.length < 3) {
+    autoCompletePlaceholder.innerHTML = '';
+  }
+  debouncedDropdown();
 });
+
+const hideAutocompleteDropdown = () => {
+  if (document.querySelector('.autocomplete-wrapper')) {
+    document.querySelector('.autocomplete-wrapper').classList.add('hide');
+  }
+};
+
+export { autocompleteInput, autoCompletePlaceholder, hideAutocompleteDropdown };
