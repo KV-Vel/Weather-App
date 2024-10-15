@@ -38,21 +38,11 @@ function convertKilometersToMiles(value) {
   const DIFFERENCE = 0.621371;
   return value * DIFFERENCE;
 }
-// Можно удалить
-function convertFahrenheitToCelsius(value) {
-  return `${((value - 32) / 1.8).toFixed(1)}`;
-}
 
 function convertCelsiusToFahrenheit(value) {
   return `${(value * 1.8 + 32).toFixed(1)}`;
 }
 // Как экспортировать весь файл? Скорее всего сделать модулем или IIEF
-export {
-  convertDate,
-  convertTime,
-  findNext8Hours,
-  convertFahrenheitToCelsius,
-  convertCelsiusToFahrenheit,
-};
+export { convertDate, convertTime, findNext8Hours, convertCelsiusToFahrenheit };
 // https://www.youtube.com/watch?v=bKjpNrbMyvc&list=PLasZMtSCguZZw7l7i0BxPNKAxcmBGfAU9
 // 1:39:37

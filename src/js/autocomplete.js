@@ -1,4 +1,6 @@
 const autocompleteInput = document.querySelector('.autocomplete');
+const findBtn = document.querySelector('.find-btn');
+// eslint-disable-next-line prettier/prettier
 const autoCompletePlaceholder = document.querySelector(
   '.autocomplete-placeholder',
 );
@@ -71,17 +73,48 @@ function createAutoCompleteDropdown() {
 }
 const debouncedDropdown = debounce(createAutoCompleteDropdown, 1000);
 
-autocompleteInput.addEventListener('input', () => {
-  if (autocompleteInput.value.length < 3) {
-    autoCompletePlaceholder.innerHTML = '';
-  }
-  debouncedDropdown();
-});
-
 const hideAutocompleteDropdown = () => {
   if (document.querySelector('.autocomplete-wrapper')) {
     document.querySelector('.autocomplete-wrapper').classList.add('hide');
   }
 };
 
-export { autocompleteInput, autoCompletePlaceholder, hideAutocompleteDropdown };
+autocompleteInput.addEventListener('input', () => {
+  if (autocompleteInput.value.length < 3) {
+    autoCompletePlaceholder.innerHTML = '';
+  }
+  findBtn.classList.add('hide');
+  debouncedDropdown();
+});
+
+const handleAutocompleteInput = (e, addressWrapper = e.target) => {
+  addressWrapper.setAttribute('data-selected', 'selected');
+
+  const city = addressWrapper.querySelector('.city').textContent;
+  const country = addressWrapper.querySelector('.country').textContent;
+  autocompleteInput.value = `${city}, ${country}`;
+
+  findBtn.classList.remove('hide');
+  hideAutocompleteDropdown();
+};
+
+autocompleteInput.addEventListener('keyup', (e) => {
+  // Checking if autocomplete exist
+  const autocompleteWrapper = document.querySelector('.autocomplete-wrapper');
+  if (!autocompleteWrapper) return;
+
+  const selectedCityWrapper =
+    autocompleteWrapper.querySelector('.address-wrapper');
+
+  if (e.code === 'Enter') {
+    handleAutocompleteInput(e, selectedCityWrapper);
+  }
+});
+
+autoCompletePlaceholder.addEventListener('click', (e) => {
+  if (e.target.classList.contains('address-wrapper')) {
+    handleAutocompleteInput(e);
+  }
+});
+
+export { autocompleteInput, findBtn };

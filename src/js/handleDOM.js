@@ -1,9 +1,5 @@
 import { getWeather } from './weather';
-import {
-  autocompleteInput,
-  autoCompletePlaceholder,
-  hideAutocompleteDropdown,
-} from './autocomplete';
+import { autocompleteInput, findBtn } from './autocomplete';
 import {
   convertCelsiusToFahrenheit,
   convertDate,
@@ -14,6 +10,7 @@ import {
 const location = document.querySelector('.location');
 const form = document.querySelector('form');
 const circle = document.querySelector('.circle');
+// const findBtn = document.querySelector('.find-btn');
 const everyTempValue = [
   document.querySelector('.temperature'),
   ...document.querySelectorAll('.small-temperature'),
@@ -22,20 +19,7 @@ const everyTempValue = [
 
 // eslint-disable-next-line prettier/prettier
 const getMode = () =>
-  circle.classList.contains('fahrenheit') ? 'us' : 'metric';
-
-const handleInput = (e) => {
-  if (e.target.classList.contains('address-wrapper')) {
-    const addressWrapper = e.target;
-    addressWrapper.setAttribute('data-selected', 'selected');
-
-    const city = addressWrapper.querySelector('.city').textContent;
-    const country = addressWrapper.querySelector('.country').textContent;
-    autocompleteInput.value = `${city}, ${country}`;
-
-    hideAutocompleteDropdown();
-  }
-};
+  circle.classList.contains('fahrenheit') ? 'us' : 'metric'; // Ему точно здесь место?
 
 function applyCurrentDay(data, unitGroup) {
   const temperature = document.querySelector('.temperature');
@@ -142,10 +126,14 @@ form.addEventListener('submit', async (e) => {
   );
 
   applyDataToDOM(autocompleteInput.value, weatherData);
+
   autocompleteInput.value = '';
+  findBtn.classList.add('hide');
 });
 
-autoCompletePlaceholder.addEventListener('click', handleInput);
+form.addEventListener('keydown', async (e) => {
+  if (e.code === 'Enter') e.preventDefault();
+});
 
 circle.addEventListener('click', () => {
   toggleMode();
@@ -163,4 +151,6 @@ circle.addEventListener('click', () => {
 export default { applyDataToDOM };
 // make tooltip to like ENTER at least 3 letter
 // Убрать precipitation probability потому что всегда показывает 0 на текущий момент?
+// Задать min height главному окно, чтобы оно не прыгало если название города или страны слишком высокое (когда оно в 2 строки указывается)
+// Убрать значения из html dom оставив пустые. Добавить крутилятор пока грузятся значения
 // https://htmlacademy.ru/blog/html/adaptive-srcset
