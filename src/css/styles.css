@@ -177,6 +177,8 @@ img {
 .temperature {
   font-size: var(--big-font-size);
   font-weight: 900;
+  min-width: 75px;
+  text-align: center;
 }
 
 .main-information__text-wrapper {
@@ -324,6 +326,41 @@ img {
 .hide {
   display: none;
 }
+
+/*Farenheit to Celcius*/
+.toggle-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.mode {
+  font-weight: 800;
+}
+
+.track {
+  min-width: 100px;
+  background-color: var(--light-gray);
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.circle {
+  min-height: 90%;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  background-color: var(--interactivity-gray);
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.circle.fahrenheit {
+  transform: translateX(55px);
+}
+
 @media (min-width: 600px) {
   .right-window {
     grid-column: 2;
@@ -371,4 +408,3 @@ img {
     gap: none;
   }
 }
-/*// https://www.youtube.com/watch?v=l8pe_MSX4Lc*/

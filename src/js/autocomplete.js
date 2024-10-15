@@ -69,7 +69,7 @@ function createAutoCompleteDropdown() {
       .catch((e) => console.log(e));
   }
 }
-const debouncedDropdown = debounce(createAutoCompleteDropdown, 1500);
+const debouncedDropdown = debounce(createAutoCompleteDropdown, 1000);
 
 autocompleteInput.addEventListener('input', () => {
   if (autocompleteInput.value.length < 3) {
