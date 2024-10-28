@@ -1,6 +1,5 @@
 const autocompleteInput = document.querySelector('.autocomplete');
 const findBtn = document.querySelector('.find-btn');
-// eslint-disable-next-line prettier/prettier
 const autoCompletePlaceholder = document.querySelector(
   '.autocomplete-placeholder',
 );
@@ -10,7 +9,6 @@ const options = {
   mode: 'cors',
 };
 
-// eslint-disable-next-line import/prefer-default-export
 export const debounce = (func, ms) => {
   let timeout;
   return (...args) => {
@@ -21,7 +19,6 @@ export const debounce = (func, ms) => {
   };
 };
 
-// eslint-disable-next-line consistent-return
 const getCitySuggestions = async () => {
   try {
     const response = await fetch(
@@ -38,12 +35,13 @@ const getCitySuggestions = async () => {
 };
 
 function createAutoCompleteDOM(data) {
+  console.log(data);
   if (document.querySelector('.autocomplete-wrapper')) {
     document.querySelector('.autocomplete-wrapper').remove();
   }
   const autocompleteWrapper = document.createElement('div');
   autocompleteWrapper.className = 'autocomplete-wrapper';
-  // eslint-disable-next-line no-restricted-syntax, prefer-const
+
   for (let element of data) {
     const addressWrapper = document.createElement('div');
     addressWrapper.className = 'address-wrapper';
@@ -56,7 +54,10 @@ function createAutoCompleteDOM(data) {
 
     const country = document.createElement('span');
     country.className = 'country';
-    country.textContent = element.address.country;
+    country.textContent =
+      element.address.country === 'United States of America'
+        ? element.address.state
+        : element.address.country;
 
     addressWrapper.append(city, country);
     autocompleteWrapper.append(addressWrapper);
@@ -79,13 +80,16 @@ const hideAutocompleteDropdown = () => {
   }
 };
 
-autocompleteInput.addEventListener('input', () => {
-  if (autocompleteInput.value.length < 3) {
-    autoCompletePlaceholder.innerHTML = '';
-  }
-  findBtn.classList.add('hide');
-  debouncedDropdown();
-});
+function createLoader() {
+  const loaderWrapper = document.createElement('div');
+  loaderWrapper.className = 'loader-wrapper';
+
+  const loader = document.createElement('div');
+  loader.className = 'loader';
+
+  loaderWrapper.append(loader);
+  autoCompletePlaceholder.append(loaderWrapper);
+}
 
 const handleAutocompleteInput = (e, addressWrapper = e.target) => {
   addressWrapper.setAttribute('data-selected', 'selected');
@@ -97,6 +101,16 @@ const handleAutocompleteInput = (e, addressWrapper = e.target) => {
   findBtn.classList.remove('hide');
   hideAutocompleteDropdown();
 };
+
+autocompleteInput.addEventListener('input', () => {
+  if (!document.querySelector('.loader-wrapper')) createLoader();
+
+  if (autocompleteInput.value.length < 3) {
+    autoCompletePlaceholder.innerHTML = '';
+  }
+  findBtn.classList.add('hide');
+  debouncedDropdown();
+});
 
 autocompleteInput.addEventListener('keyup', (e) => {
   // Checking if autocomplete exist
@@ -113,6 +127,8 @@ autocompleteInput.addEventListener('keyup', (e) => {
 
 autoCompletePlaceholder.addEventListener('click', (e) => {
   if (e.target.classList.contains('address-wrapper')) {
+    // Removing loader
+    document.querySelector('.loader-wrapper').remove();
     handleAutocompleteInput(e);
   }
 });

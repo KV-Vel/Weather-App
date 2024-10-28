@@ -1,6 +1,6 @@
 {
   "singleQuote": true,
-  "max-len": ["error", 140, 2],
+  "max-len": ["error", 150, 2],
   "tabWidth": 2,
   "useTabs": false,
   "endOfLine": "auto"

@@ -34,15 +34,27 @@ function findNext8Hours(data) {
   return nextAvailableHours.splice(0, 8);
 }
 
-function convertKilometersToMiles(value) {
-  const DIFFERENCE = 0.621371;
-  return value * DIFFERENCE;
+// visibility km to miles
+function convertVisibility(value) {
+  const VISIBILITY_DIFFERENCE = 0.621371;
+  return (value * VISIBILITY_DIFFERENCE).toFixed(1);
+}
+
+// m/s to mph
+function convertWindSpeed(value) {
+  const WINDSPEED_DIFFERENCE = 2.23694;
+  return (value * WINDSPEED_DIFFERENCE).toFixed(1);
 }
 
 function convertCelsiusToFahrenheit(value) {
   return `${(value * 1.8 + 32).toFixed(1)}`;
 }
 // Как экспортировать весь файл? Скорее всего сделать модулем или IIEF
-export { convertDate, convertTime, findNext8Hours, convertCelsiusToFahrenheit };
-// https://www.youtube.com/watch?v=bKjpNrbMyvc&list=PLasZMtSCguZZw7l7i0BxPNKAxcmBGfAU9
-// 1:39:37
+export {
+  convertDate,
+  convertTime,
+  findNext8Hours,
+  convertCelsiusToFahrenheit,
+  convertWindSpeed,
+  convertVisibility,
+};

@@ -25,6 +25,7 @@ body {
   font-optical-sizing: auto;
   font-style: normal;
   color: var(--darkest);
+  animation: fadeInUp 1s;
 }
 
 main {
@@ -48,20 +49,32 @@ form {
   display: flex;
   gap: 0.5rem;
   width: 290px;
+  position: relative;
 }
 
 label {
   position: relative;
 }
 
+img {
+  width: 100%;
+  height: auto;
+}
+
+label,
 .autocomplete {
-  outline: 1px solid var(--middle-gray);
-  padding: 5px 5px 5px 15px;
+  width: 100%;
+}
+
+.autocomplete {
+  padding: 5px 5px 5px 10px;
   border-radius: var(--light-border-radius);
+  background-color: var(--light-gray);
+  font-size: var(--small-font-size);
 }
 
 .autocomplete:focus {
-  outline: 1px solid var(--interactivity-gray);
+  outline: none;
 }
 
 .autocomplete-wrapper {
@@ -105,8 +118,10 @@ label {
 .find-btn {
   border-bottom: 2px solid var(--interactivity-gray);
   padding: 5px 1.5rem 2px 1.5rem;
-  font-weight: 300;
+  font-weight: 400;
   position: relative;
+  border-radius: 0 var(--light-border-radius) var(--light-border-radius) 0;
+  height: 27px;
 }
 
 .find-btn:hover {
@@ -118,7 +133,7 @@ label {
   position: absolute;
   content: '';
   right: 0;
-  bottom: 0;
+  bottom: -0.5px;
   width: 100%;
   background-color: var(--interactivity-gray);
   z-index: -1;
@@ -127,8 +142,16 @@ label {
 }
 
 .find-btn:hover::after {
-  height: 100%;
+  height: 105%;
   border-radius: 2px 2px 0 0;
+}
+
+.autocomplete-placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  height: 25px;
 }
 
 /*MAIN*/
@@ -136,6 +159,21 @@ label {
   display: grid;
   padding: 0 10px;
   row-gap: 10px;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.big-window-wrapper {
+  max-height: 750px;
 }
 
 .big-window__main-information {
@@ -169,9 +207,8 @@ label {
   vertical-align: baseline;
 }
 
-img {
-  width: 100%;
-  height: auto;
+.small-weather-image {
+  min-height: 100px;
 }
 
 .temperature {
@@ -255,12 +292,33 @@ img {
 .inner-wrapper-row {
   display: flex;
   justify-content: space-around;
-  gap: 15px;
+  align-items: center;
+  gap: 5px;
   padding: 0.5rem;
   background-color: var(--light-gray);
   border-radius: 10px;
 }
 
+.inner-wrapper-row > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.inner-wrapper-row > div > img {
+  width: 15px;
+  height: 15px;
+}
+
+.hourly__time {
+  text-align: left;
+  min-width: 50px;
+}
+
+.hourly__temperature,
+.hourly__rain-probability {
+  min-width: 35px;
+}
 /* Next 5 days */
 .next-5days__wrapper {
   font-family: 'Cabin', sans-serif;
@@ -269,6 +327,7 @@ img {
   justify-self: center;
   width: 250px;
   position: relative;
+  grid-column: 1/2;
 }
 
 .arrow {
@@ -317,14 +376,40 @@ img {
   flex-shrink: 0;
 }
 
+.small-description {
+  color: var(--middle-gray);
+  font-weight: 100;
+}
+
 .date {
   font-weight: 100;
   font-size: 0.8rem;
-  color: var(--middle-gray);
 }
 
 .hide {
   display: none;
+}
+
+/*Links*/
+.links-wrapper {
+  display: flex;
+  justify-content: center;
+  grid-column: 1/2;
+  margin: 10px;
+}
+
+.links-wrapper > a {
+  color: var(--dark-gray);
+}
+
+.github-arrow {
+  transition: 0.3s ease-in-out;
+  display: inline-block;
+}
+
+a:hover .github-arrow {
+  transform: translate(3px, -3px);
+  color: var(--darkest);
 }
 
 /*Farenheit to Celcius*/
@@ -361,6 +446,42 @@ img {
   transform: translateX(55px);
 }
 
+/* LOADER */
+.loader-wrapper {
+  width: 25px;
+  height: 25px;
+  background-color: var(--light-gray);
+  border-radius: 3px;
+  position: relative;
+}
+
+.loader {
+  width: 12.5px;
+  height: 12.5px;
+  background-color: var(--interactivity-gray);
+  border-radius: 3px;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: loaderPath 2s infinite;
+}
+
+@keyframes loaderPath {
+  25% {
+    transform: translate(100%, 0);
+  }
+  50% {
+    transform: translate(100%, 100%);
+  }
+  75% {
+    transform: translate(0, 100%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
 @media (min-width: 600px) {
   .right-window {
     grid-column: 2;
@@ -377,7 +498,7 @@ img {
 
   .next-5days__inner-wrapper {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(auto, 1fr);
     padding: 0;
     overflow: initial;
   }
@@ -406,5 +527,13 @@ img {
   .left-window {
     min-width: 356px;
     gap: none;
+  }
+
+  .next-5days__wrapper {
+    grid-column: 1/3;
+  }
+
+  .links-wrapper {
+    grid-column: 1/3;
   }
 }

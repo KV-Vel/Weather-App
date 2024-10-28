@@ -5,25 +5,30 @@ import {
   convertDate,
   findNext8Hours,
   convertTime,
+  convertVisibility,
+  convertWindSpeed,
 } from './utils/utils';
 
 const location = document.querySelector('.location');
 const form = document.querySelector('form');
 const circle = document.querySelector('.circle');
-// const findBtn = document.querySelector('.find-btn');
 const everyTempValue = [
   document.querySelector('.temperature'),
   ...document.querySelectorAll('.small-temperature'),
   ...document.querySelectorAll('.hourly__temperature'),
 ];
 
-// eslint-disable-next-line prettier/prettier
-const getMode = () =>
-  circle.classList.contains('fahrenheit') ? 'us' : 'metric'; // Ему точно здесь место?
+const toggleMode = () => circle.classList.toggle('fahrenheit');
 
-function applyCurrentDay(data, unitGroup) {
+const getMode = () =>
+  circle.classList.contains('fahrenheit') ? 'us' : 'metric';
+
+function displayToday(data, unitGroup) {
+  const today = data.currentConditions;
+
   const temperature = document.querySelector('.temperature');
   const description = document.querySelector('.state-description');
+  const weatherImage = document.querySelector('.weather-image');
   const [
     humidity,
     windSpeed,
@@ -33,30 +38,47 @@ function applyCurrentDay(data, unitGroup) {
     precipitationChance,
     visibility,
   ] = document.querySelectorAll('.small-wrapper > .value');
-  const weatherImage = document.querySelector('.weather-image');
 
-  const today = data.currentConditions;
-
-  temperature.textContent = `${unitGroup === 'metric' ? today.temp : convertCelsiusToFahrenheit(today.temp)}°`;
+  temperature.textContent =
+    unitGroup === 'metric'
+      ? `${today.temp}°`
+      : `${convertCelsiusToFahrenheit(today.temp)}°`;
   temperature.setAttribute('data-metric', today.temp);
-  // eslint-disable-next-line prettier/prettier
   temperature.setAttribute(
     'data-imperial',
     convertCelsiusToFahrenheit(today.temp),
   );
 
+  windSpeed.textContent =
+    unitGroup === 'metric'
+      ? `${today.windspeed} m/s`
+      : `${convertWindSpeed(today.windspeed)} mph`;
+  windSpeed.setAttribute('data-metric', `${today.windspeed} m/s`);
+  windSpeed.setAttribute(
+    'data-imperial',
+    `${convertWindSpeed(today.windspeed)} mph`,
+  );
+
+  visibility.textContent =
+    unitGroup === 'metric'
+      ? `${today.visibility} km`
+      : `${convertVisibility(today.visibility)} mi`;
+  visibility.setAttribute('data-metric', `${today.visibility} km`);
+  visibility.setAttribute(
+    'data-imperial',
+    `${convertVisibility(today.visibility)} mi`,
+  );
+
   description.textContent = today.conditions;
   humidity.textContent = `${today.humidity}%`;
-  windSpeed.textContent = `${today.windspeed}kph`;
   sunrise.textContent = today.sunrise;
   sunset.textContent = today.sunset;
   cloudCoverage.textContent = `${today.cloudcover}%`;
   precipitationChance.textContent = `${today.precipprob}%`;
-  visibility.textContent = `${today.visibility}km`;
   weatherImage.src = `./assets/weather-svgs/${today.icon}.svg`;
 }
 
-function applyNext5Days(data, unitGroup) {
+function displayFiveDays(data, unitGroup) {
   const [...dayWrapper] = document.querySelectorAll('.day-wrapper');
 
   dayWrapper.forEach((day, index) => {
@@ -76,7 +98,6 @@ function applyNext5Days(data, unitGroup) {
     smallImg.src = `./assets/weather-svgs/${days.icon}.svg`;
     dayTemp.textContent = `${unitGroup === 'metric' ? days.temp : convertCelsiusToFahrenheit(days.temp)}°`;
     dayTemp.setAttribute('data-metric', days.temp);
-    // eslint-disable-next-line prettier/prettier
     dayTemp.setAttribute(
       'data-imperial',
       convertCelsiusToFahrenheit(days.temp),
@@ -86,7 +107,7 @@ function applyNext5Days(data, unitGroup) {
   });
 }
 
-function applyNext8Hours(data, unitGroup) {
+function displayHourly(data, unitGroup) {
   const [...next8HoursRows] = document.querySelectorAll('.inner-wrapper-row');
   const next8Hours = findNext8Hours(data);
 
@@ -98,7 +119,6 @@ function applyNext8Hours(data, unitGroup) {
     rowTime.textContent = convertTime(next8Hours[index].datetime);
     rowTemp.textContent = `${unitGroup === 'metric' ? next8Hours[index].temp : convertCelsiusToFahrenheit(next8Hours[index].temp)}°`;
     rowTemp.setAttribute('data-metric', next8Hours[index].temp);
-    // eslint-disable-next-line prettier/prettier
     rowTemp.setAttribute(
       'data-imperial',
       convertCelsiusToFahrenheit(next8Hours[index].temp),
@@ -110,12 +130,22 @@ function applyNext8Hours(data, unitGroup) {
 function applyDataToDOM(cityName, data) {
   location.textContent = cityName;
   const unitGroup = getMode();
-  applyCurrentDay(data, unitGroup);
-  applyNext5Days(data, unitGroup);
-  applyNext8Hours(data, unitGroup);
+  displayToday(data, unitGroup);
+  displayFiveDays(data, unitGroup);
+  displayHourly(data, unitGroup);
 }
 
-const toggleMode = () => circle.classList.toggle('fahrenheit');
+function displayValuesConversion(valueName) {
+  const windSpeedEl = document.querySelector('.wind-speed > .value');
+  const visbilityEl = document.querySelector('.visibility > .value');
+
+  everyTempValue.forEach((tempValue) => {
+    tempValue.textContent = `${tempValue.dataset[valueName]}°`;
+  });
+
+  windSpeedEl.textContent = `${windSpeedEl.dataset[valueName]}`;
+  visbilityEl.textContent = `${visbilityEl.dataset[valueName]}`;
+}
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -137,20 +167,12 @@ form.addEventListener('keydown', async (e) => {
 
 circle.addEventListener('click', () => {
   toggleMode();
-  if (circle.classList.contains('fahrenheit')) {
-    everyTempValue.forEach((value) => {
-      value.textContent = `${value.dataset.imperial}°`;
-    });
+
+  if (getMode() === 'us') {
+    displayValuesConversion('imperial');
   } else {
-    everyTempValue.forEach((value) => {
-      value.textContent = `${value.dataset.metric}°`;
-    });
+    displayValuesConversion('metric');
   }
 });
 
 export default { applyDataToDOM };
-// make tooltip to like ENTER at least 3 letter
-// Убрать precipitation probability потому что всегда показывает 0 на текущий момент?
-// Задать min height главному окно, чтобы оно не прыгало если название города или страны слишком высокое (когда оно в 2 строки указывается)
-// Убрать значения из html dom оставив пустые. Добавить крутилятор пока грузятся значения
-// https://htmlacademy.ru/blog/html/adaptive-srcset
