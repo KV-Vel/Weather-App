@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+  <link rel="icon" href="app-favicon.svg"><script defer src="main.js"></script></head>
+  <body>
+    <header>
+      <div>
+        <h1>Weather App</h1>
+      </div>
+    </header>
+    <main>
+      <div class="toggle-wrapper">
+        <span class="mode">°C</span>
+        <div class="track">
+          <div class="circle"></div>
+        </div>
+        <span class="mode">°F</span>
+      </div>
+      <section class="search-wrapper">
+        <form>
+          <label>
+            <input
+              class="autocomplete"
+              type="search"
+              placeholder="Enter a city"
+            />
+            <div class="autocomplete-placeholder"></div>
+          </label>
+          <button type="submit" class="find-btn hide">Find</button>
+        </form>
+      </section>
+      <section class="main-wrapper">
+        <div class="big-window-wrapper">
+          <div class="big-window__main-information">
+            <div class="left-window">
+              <div class="temp-and-state">
+                <span class="temperature"></span>
+                <div class="img-wrapper">
+                  <img alt="weather-image" class="weather-image" />
+                </div>
+              </div>
+              <div class="main-information__text-wrapper">
+                <div class="state-description"></div>
+                <div class="location"></div>
+              </div>
+            </div>
+            <div class="right-window">
+              <ul class="additional-information__wrapper">
+                <li class="small-wrapper humidity">
+                  Humidity <span class="value"></span>
+                </li>
+                <li class="small-wrapper wind-speed">
+                  Wind speed <span class="value"></span>
+                </li>
+                <li class="small-wrapper sunrise">
+                  Sunrise <span class="value"></span>
+                </li>
+                <li class="small-wrapper sunset">
+                  Sunset <span class="value"></span>
+                </li>
+                <li class="small-wrapper cloud-cover">
+                  Cloud coverage <span class="value"></span>
+                </li>
+                <li class="small-wrapper precipitation">
+                  Precipitation probability <span class="value"></span>
+                </li>
+                <li class="small-wrapper visibility">
+                  Visibility <span class="value"></span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="hourly-weather__wrapper">
+          <div class="hourly-weather__inner-wrapper">
+            <div class="inner-wrapper-row">
+              <span class="hourly__time"></span>
+              <span class="hourly__temperature"></span>
+              <div><img src="assets/weather-svgs/Rainy-Bulk.svg" alt="rain icon"><span class="hourly__rain-probability"></span></div>
+            </div>
+            <div class="inner-wrapper-row">
+              <span class="hourly__time"></span>
+              <span class="hourly__temperature"></span>
+              <div><img src="assets/weather-svgs/Rainy-Bulk.svg" alt="rain icon"><span class="hourly__rain-probability"></span></div>
+            </div>
+            <div class="inner-wrapper-row">
+              <span class="hourly__time"></span>
+              <span class="hourly__temperature"></span>
+              <div><img src="assets/weather-svgs/Rainy-Bulk.svg" alt="rain icon"><span class="hourly__rain-probability"></span></div>
+            </div>
+            <div class="inner-wrapper-row">
+              <span class="hourly__time"></span>
+              <span class="hourly__temperature"></span>
+              <div><img src="assets/weather-svgs/Rainy-Bulk.svg" alt="rain icon"><span class="hourly__rain-probability"></span></div>
+            </div>
+            <div class="inner-wrapper-row">
+              <span class="hourly__time"></span>
+              <span class="hourly__temperature"></span>
+              <div><img src="assets/weather-svgs/Rainy-Bulk.svg" alt="rain icon"><span class="hourly__rain-probability"></span></div>
+            </div>
+            <div class="inner-wrapper-row">
+              <span class="hourly__time"></span>
+              <span class="hourly__temperature"></span>
+              <div><img src="assets/weather-svgs/Rainy-Bulk.svg" alt="rain icon"><span class="hourly__rain-probability"></span></div>
+            </div>
+            <div class="inner-wrapper-row">
+              <span class="hourly__time"></span>
+              <span class="hourly__temperature"></span>
+              <div><img src="assets/weather-svgs/Rainy-Bulk.svg" alt="rain icon"><span class="hourly__rain-probability"></span></div>
+            </div>
+            <div class="inner-wrapper-row">
+              <span class="hourly__time"></span>
+              <span class="hourly__temperature"></span>
+              <div><img src="assets/weather-svgs/Rainy-Bulk.svg" alt="rain icon"><span class="hourly__rain-probability"></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="next-5days__wrapper">
+          <button
+            type="button"
+            class="arrow arrow-left"
+            aria-label="left arrow"
+          ></button>
+          <button
+            type="button"
+            class="arrow arrow-right"
+            aria-label="right arrow"
+          ></button>
+          <div class="next-5days__inner-wrapper">
+            <div
+              class="day-wrapper first-day__wrapper active"
+              data-position="0"
+            >
+              <div class="weekday-img-wrapper">
+                <img alt="weather-picture" class="small-weather-image" />
+              </div>
+              <div class="weekday-information">
+                <span class="small-temperature"></span>
+                <span class="small-description"></span>
+                <span class="date"></span>
+              </div>
+            </div>
+            <div class="day-wrapper second-day__wrapper" data-position="1">
+              <div class="weekday-img-wrapper">
+                <img alt="weather-picture" class="small-weather-image" />
+              </div>
+              <div class="weekday-information">
+                <span class="small-temperature"></span>
+                <span class="small-description"></span>
+                <span class="date"></span>
+              </div>
+            </div>
+            <div class="day-wrapper third-day__wrapper" data-position="2">
+              <div class="weekday-img-wrapper">
+                <img alt="weather-picture" class="small-weather-image" />
+              </div>
+              <div class="weekday-information">
+                <span class="small-temperature"></span>
+                <span class="small-description"></span>
+                <span class="date"></span>
+              </div>
+            </div>
+            <div class="day-wrapper fourth-day__wrapper" data-position="3">
+              <div class="weekday-img-wrapper">
+                <img alt="weather-picture" class="small-weather-image" />
+              </div>
+              <div class="weekday-information">
+                <span class="small-temperature"></span>
+                <span class="small-description"></span>
+                <span class="date"></span>
+              </div>
+            </div>
+            <div class="day-wrapper fifth-day__wrapper" data-position="4">
+              <div class="weekday-img-wrapper">
+                <img alt="weather-picture" class="small-weather-image" />
+              </div>
+              <div class="weekday-information">
+                <span class="small-temperature"></span>
+                <span class="small-description"></span>
+                <span class="date"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="links-wrapper">
+          <a href="https://github.com/KV-Vel"
+            >My GitHub <span class="github-arrow">&#8599</span>
+          </a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
