@@ -101,7 +101,12 @@ label,
   background-color: var(--light-gray);
 }
 
-.city {
+.error-wrapper {
+  pointer-events: none;
+}
+
+.city,
+.err {
   font-size: 0.9rem;
   font-weight: 800;
 }

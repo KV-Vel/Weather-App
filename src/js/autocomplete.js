@@ -34,8 +34,26 @@ const getCitySuggestions = async () => {
   }
 };
 
+function createError() {
+  const autocompleteWrapper = document.createElement('div');
+  autocompleteWrapper.className = 'autocomplete-wrapper';
+
+  const addressWrapper = document.createElement('div');
+  addressWrapper.className = 'error-wrapper';
+
+  const err = document.createElement('span');
+  err.className = 'city';
+  err.textContent = 'No city found';
+
+  addressWrapper.append(err);
+  autocompleteWrapper.append(addressWrapper);
+  autoCompletePlaceholder.append(autocompleteWrapper);
+
+  // remove loader
+  document.querySelector('.loader-wrapper').remove();
+}
+
 function createAutoCompleteDOM(data) {
-  console.log(data);
   if (document.querySelector('.autocomplete-wrapper')) {
     document.querySelector('.autocomplete-wrapper').remove();
   }
@@ -69,7 +87,7 @@ function createAutoCompleteDropdown() {
   if (autocompleteInput.value.length >= 3) {
     getCitySuggestions()
       .then((res) => createAutoCompleteDOM(res))
-      .catch((e) => console.log(e));
+      .catch(() => createError());
   }
 }
 const debouncedDropdown = debounce(createAutoCompleteDropdown, 1000);
