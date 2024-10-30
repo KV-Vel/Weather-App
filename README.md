@@ -1,5 +1,6 @@
 <h1>Weather App</h1>
-Odin Project curriculum
+<div>Odin Project curriculum</div>
+<b>Live: https://kv-vel.github.io/Weather-App/</b>
 
 # Tech stack
 <ul>
