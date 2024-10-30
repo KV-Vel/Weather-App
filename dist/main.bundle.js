@@ -9,6 +9,28 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/css/reset-css.css":
+/*!*******************************!*\
+  !*** ./src/css/reset-css.css ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9zcmMvY3NzL3Jlc2V0LWNzcy5jc3MiLCJtYXBwaW5ncyI6IjtBQUFBIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vd2VhdGhlci1hcHAvLi9zcmMvY3NzL3Jlc2V0LWNzcy5jc3M/NDk5YiJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBleHRyYWN0ZWQgYnkgbWluaS1jc3MtZXh0cmFjdC1wbHVnaW5cbmV4cG9ydCB7fTsiXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./src/css/reset-css.css\n");
+
+/***/ }),
+
+/***/ "./src/css/styles.css":
+/*!****************************!*\
+  !*** ./src/css/styles.css ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9zcmMvY3NzL3N0eWxlcy5jc3MiLCJtYXBwaW5ncyI6IjtBQUFBIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vd2VhdGhlci1hcHAvLi9zcmMvY3NzL3N0eWxlcy5jc3M/ZTRiMCJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBleHRyYWN0ZWQgYnkgbWluaS1jc3MtZXh0cmFjdC1wbHVnaW5cbmV4cG9ydCB7fTsiXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./src/css/styles.css\n");
+
+/***/ }),
+
 /***/ "./src/assets/weather-svgs sync \\.svg$":
 /*!***********************************************************!*\
   !*** ./src/assets/weather-svgs/ sync nonrecursive \.svg$ ***!
@@ -69,7 +91,7 @@ webpackContext.id = "./src/assets/weather-svgs sync \\.svg$";
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _js_autocomplete__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/autocomplete */ \"./src/js/autocomplete.js\");\n/* harmony import */ var _js_carousel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./js/carousel */ \"./src/js/carousel.js\");\n/* harmony import */ var _js_weather__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./js/weather */ \"./src/js/weather.js\");\n/* harmony import */ var _js_handleDOM__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./js/handleDOM */ \"./src/js/handleDOM.js\");\n\r\n\r\n\r\n\r\n\r\n__webpack_require__(\"./src/assets/weather-svgs sync \\\\.svg$\");\r\n\r\nasync function defaultRequest() {\r\n  const weatherData = await (0,_js_weather__WEBPACK_IMPORTED_MODULE_2__.getWeather)(59.911491, 10.757933); // coordinates of Oslo, Norway.\r\n  _js_handleDOM__WEBPACK_IMPORTED_MODULE_3__[\"default\"].applyDataToDOM('Oslo, Norway', weatherData);\r\n}\r\n\r\ndocument.addEventListener('DOMContentLoaded', defaultRequest);\r\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9zcmMvaW5kZXguanMiLCJtYXBwaW5ncyI6Ijs7Ozs7QUFBMkI7QUFDSjtBQUNtQjtBQUNIO0FBQ3ZDO0FBQ0EsNkRBQXlEO0FBQ3pEO0FBQ0E7QUFDQSw0QkFBNEIsdURBQVUsd0JBQXdCO0FBQzlELEVBQUUscURBQVM7QUFDWDtBQUNBO0FBQ0EiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly93ZWF0aGVyLWFwcC8uL3NyYy9pbmRleC5qcz9iNjM1Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCAnLi9qcy9hdXRvY29tcGxldGUnO1xyXG5pbXBvcnQgJy4vanMvY2Fyb3VzZWwnO1xyXG5pbXBvcnQgeyBnZXRXZWF0aGVyIH0gZnJvbSAnLi9qcy93ZWF0aGVyJztcclxuaW1wb3J0IGhhbmRsZURPTSBmcm9tICcuL2pzL2hhbmRsZURPTSc7XHJcblxyXG5yZXF1aXJlLmNvbnRleHQoJy4vYXNzZXRzL3dlYXRoZXItc3ZncycsIGZhbHNlLCAvXFwuc3ZnJC8pO1xyXG5cclxuYXN5bmMgZnVuY3Rpb24gZGVmYXVsdFJlcXVlc3QoKSB7XHJcbiAgY29uc3Qgd2VhdGhlckRhdGEgPSBhd2FpdCBnZXRXZWF0aGVyKDU5LjkxMTQ5MSwgMTAuNzU3OTMzKTsgLy8gY29vcmRpbmF0ZXMgb2YgT3NsbywgTm9yd2F5LlxyXG4gIGhhbmRsZURPTS5hcHBseURhdGFUb0RPTSgnT3NsbywgTm9yd2F5Jywgd2VhdGhlckRhdGEpO1xyXG59XHJcblxyXG5kb2N1bWVudC5hZGRFdmVudExpc3RlbmVyKCdET01Db250ZW50TG9hZGVkJywgZGVmYXVsdFJlcXVlc3QpO1xyXG4iXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./src/index.js\n");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_reset_css_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./css/reset-css.css */ \"./src/css/reset-css.css\");\n/* harmony import */ var _css_styles_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./css/styles.css */ \"./src/css/styles.css\");\n/* harmony import */ var _js_autocomplete__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./js/autocomplete */ \"./src/js/autocomplete.js\");\n/* harmony import */ var _js_carousel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./js/carousel */ \"./src/js/carousel.js\");\n/* harmony import */ var _js_weather__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./js/weather */ \"./src/js/weather.js\");\n/* harmony import */ var _js_handleDOM__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./js/handleDOM */ \"./src/js/handleDOM.js\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n__webpack_require__(\"./src/assets/weather-svgs sync \\\\.svg$\");\r\n\r\nasync function defaultRequest() {\r\n  const weatherData = await (0,_js_weather__WEBPACK_IMPORTED_MODULE_4__.getWeather)(59.911491, 10.757933); // coordinates of Oslo, Norway.\r\n  _js_handleDOM__WEBPACK_IMPORTED_MODULE_5__[\"default\"].applyDataToDOM('Oslo, Norway', weatherData);\r\n}\r\n\r\ndocument.addEventListener('DOMContentLoaded', defaultRequest);\r\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9zcmMvaW5kZXguanMiLCJtYXBwaW5ncyI6Ijs7Ozs7OztBQUE2QjtBQUNIO0FBQ0M7QUFDSjtBQUNtQjtBQUNIO0FBQ3ZDO0FBQ0EsNkRBQXlEO0FBQ3pEO0FBQ0E7QUFDQSw0QkFBNEIsdURBQVUsd0JBQXdCO0FBQzlELEVBQUUscURBQVM7QUFDWDtBQUNBO0FBQ0EiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly93ZWF0aGVyLWFwcC8uL3NyYy9pbmRleC5qcz9iNjM1Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCAnLi9jc3MvcmVzZXQtY3NzLmNzcyc7XHJcbmltcG9ydCAnLi9jc3Mvc3R5bGVzLmNzcyc7XHJcbmltcG9ydCAnLi9qcy9hdXRvY29tcGxldGUnO1xyXG5pbXBvcnQgJy4vanMvY2Fyb3VzZWwnO1xyXG5pbXBvcnQgeyBnZXRXZWF0aGVyIH0gZnJvbSAnLi9qcy93ZWF0aGVyJztcclxuaW1wb3J0IGhhbmRsZURPTSBmcm9tICcuL2pzL2hhbmRsZURPTSc7XHJcblxyXG5yZXF1aXJlLmNvbnRleHQoJy4vYXNzZXRzL3dlYXRoZXItc3ZncycsIGZhbHNlLCAvXFwuc3ZnJC8pO1xyXG5cclxuYXN5bmMgZnVuY3Rpb24gZGVmYXVsdFJlcXVlc3QoKSB7XHJcbiAgY29uc3Qgd2VhdGhlckRhdGEgPSBhd2FpdCBnZXRXZWF0aGVyKDU5LjkxMTQ5MSwgMTAuNzU3OTMzKTsgLy8gY29vcmRpbmF0ZXMgb2YgT3NsbywgTm9yd2F5LlxyXG4gIGhhbmRsZURPTS5hcHBseURhdGFUb0RPTSgnT3NsbywgTm9yd2F5Jywgd2VhdGhlckRhdGEpO1xyXG59XHJcblxyXG5kb2N1bWVudC5hZGRFdmVudExpc3RlbmVyKCdET01Db250ZW50TG9hZGVkJywgZGVmYXVsdFJlcXVlc3QpO1xyXG4iXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./src/index.js\n");
 
 /***/ }),
 

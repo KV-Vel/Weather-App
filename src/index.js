@@ -1,3 +1,5 @@
+import './css/reset-css.css';
+import './css/styles.css';
 import './js/autocomplete';
 import './js/carousel';
 import { getWeather } from './js/weather';
